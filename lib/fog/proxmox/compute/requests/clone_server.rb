@@ -26,6 +26,12 @@ module Fog
           node = path_params[:node]
           type = path_params[:type]
           vmid = path_params[:vmid]
+
+          # Add the full clone parameter if specified
+          if body_params[:full]
+            body_params[:full] = body_params[:full] ? 1 : 0
+          end
+
           request(
             expects: [200],
             method: 'POST',
