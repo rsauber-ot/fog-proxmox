@@ -148,6 +148,7 @@ module Fog
         end
 
         def clone(newid, options = {})
+          options[:full] = options.fetch(:full, 0) ? 1 : 0
           request(:clone_server, options.merge(newid: newid), vmid: vmid)
           reload
         end
